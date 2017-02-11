@@ -126,6 +126,14 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="css\main.css" />
+    <Content Include="css\normalize.css" />
+    <Content Include="css\normalize.min.css" />
+    <Content Include="js\drawit.js" />
+    <Content Include="js\plugins.js" />
+    <Content Include="js\shareit.js" />
+    <Content Include="js\vendor\jquery-1.11.2.min.js" />
+    <Content Include="js\vendor\paper-full.js" />
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
@@ -139,10 +147,6 @@
   <ItemGroup>
     <None Include="Scripts\jquery-1.10.2-vsdoc.js" />
     <Content Include="index.html" />
-    <Content Include="jquery-1.11.2.min.js" />
-    <Content Include="main.css" />
-    <Content Include="main.js" />
-    <Content Include="paper-full.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\jquery.signalR-2.1.2.js" />
@@ -152,6 +156,10 @@
   <ItemGroup>
     <Compile Include="MainHub.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="img\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

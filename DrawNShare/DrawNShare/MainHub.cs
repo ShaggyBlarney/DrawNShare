@@ -8,9 +8,9 @@ namespace DrawNShare
 {
     public class MainHub : Hub
     {
-        public void Hello()
+        public void Send(string name, string image)
         {
-            Clients.All.hello();
+            Clients.All.broadcastMessage(name, image);
         }
     }
 }
