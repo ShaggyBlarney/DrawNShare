@@ -8,15 +8,19 @@
 </head>
 <body>
     <h1>DrawNShare</h1>
-
+    <ul id="discussion"></ul>
+    <div id="posting">
     <canvas id="drawArea"></canvas>
 
     <div id="toolbox">
-
+        <label>Posting As:</label><input id="userName" type="text" value="Anon"/>
         <div id="colorPalette">
-
+        
         </div>
+        <button id="send" type="button">Send</button>
+        <button id="clear" type="button">Clear</button>
     </div>
+        </div>
 
     <script src="Scripts/jquery-1.10.2.min.js"></script>
     <script src="js/vendor/paper-full.js"></script>

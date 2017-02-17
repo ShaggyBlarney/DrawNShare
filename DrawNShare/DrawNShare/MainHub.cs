@@ -10,6 +10,7 @@ namespace DrawNShare
     {
         public void Send(string name, string image)
         {
+            
             Clients.All.broadcastMessage(name, image);
         }
     }

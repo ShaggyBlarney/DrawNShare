@@ -1,37 +1,53 @@
-var colorPalette = ['#ff0099', '#f3f315', '#83f52c', '#ff6600', '#6e0dd0'];
-var selectedTool = 'pencil';
-var selectedColour = '#000000';
-tool.minDistance = 10;
+var colors = {
+    palette: ['#ff0099', '#f3f315', '#83f52c', '#ff6600', '#6e0dd0', '#ffffff'],
+    selected: null
+}
+
+//var mainCanvas = null;
+
+var penTool = new Tool();
 
 $(document).ready(function () {
-    var colors = ""
-    for (i = 0; i < colorPalette.length; i++) {
-        colors += '<button type="button" class="paletteColor" value="' + colorPalette[i] + '" style="background-color:' + colorPalette[i] + '"></button>'
+    //mainCanvas = paper.getPaper();
+    var colorPaletteBar = ""
+    for (i = 0; i < colors.palette.length; i++) {
+        colorPaletteBar += '<button type="button" class="paletteColor" value="' + colors.palette[i] + '" style="background-color:' + colors.palette[i] + '"></button>'
     }
-    $('#colorPalette').append(colors);
+    $('#colorPalette').append(colorPaletteBar);
+    colors.selected = colors.palette[0];
+    penTool.activate();
 });
 
+// sets draw color with user clicks a palette option
 $('.paletteColor').click(function () {
-    selectedColour = $(this).val();
+    colors.selected = $(this).val();
+    $('paletteColor').removeClass('selected');
+    $(this).addClass('selected');
+});
+
+// clear button function
+$('#clear').click(function () {
+    project.activeLayer.removeChildren();
 });
 
 var path;
- function onMouseDown(event) {
+
+// Pen Tool Setup
+penTool.minDistance = 10;
+penTool.onMouseDown = function (event) {
  	path = new Path();
- 	path.strokeColor = 'black';
+ 	path.strokeColor = colors.selected;
  }
 
- function onMouseDrag(event) {
+penTool.onMouseDrag = function(event) {
      path.add(event.point);
      path.smooth();
  }
 
- function onMouseUp(event) {
+penTool.onMouseUp = function(event) {
     path.add(event.point);
- 	path.strokeColor = selectedColour;
  	path.strokeWidth = 5;
  	path.strokeCap = 'round';
  	path.closed = false;
- 	path.smooth();
-
+ 	path.simplify(10);
  }
